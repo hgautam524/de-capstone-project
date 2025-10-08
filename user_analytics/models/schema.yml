@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_posts
+    description: "Parsed posts data"
+    columns:
+      - name: post_id
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: stg_comments
+    description: "Parsed comments data"
+    columns:
+      - name: comment_id
+        tests:
+          - unique
+          - not_null
+      - name: post_id
+        tests:
+          - relationships:
+              to: ref('stg_posts')
+              field: post_id
+
+  - name: dim_users
+    description: "Unique list of users"
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_posts
+    description: "Fact table containing post details and comment counts"

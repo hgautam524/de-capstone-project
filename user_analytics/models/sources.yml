@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: USER_ACTIVITY_DB
+    schema: RAW_DATA
+    tables:
+      - name: posts
+        description: "Raw posts data loaded from JSONPlaceholder API"
+      - name: comments
+        description: "Raw comments data loaded from JSONPlaceholder API"

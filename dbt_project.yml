@@ -1,0 +1,29 @@
+# Project metadata
+name: 'user_analytics'
+version: '1.0.0'
+
+# dbt profile to use
+profile: 'user_analytics'
+
+# File path configurations
+model-paths: ["user_analytics/models"]
+analysis-paths: ["user_analytics/analyses"]
+test-paths: ["user_analytics/tests"]
+seed-paths: ["user_analytics/seeds"]
+macro-paths: ["user_analytics/macros"]
+snapshot-paths: ["user_analytics/snapshots"]
+
+# Clean targets (folders deleted by `dbt clean`)
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Model configurations
+models:
+  user_analytics:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
